@@ -15,8 +15,9 @@ const MainMenuScreen = ({ navigation }) => {
 
   const configureGoogleSign = () => {
     GoogleSignin.configure({
+      
       // Get this from Google Cloud Console
-      webClientId: '527248714925-dj2i0icblfhlkvlfk7m6ou7v62l7i8dt.apps.googleusercontent.com',
+      webClientId: '279701516543-4j4000er9rnko27me9d21ntkghnk2k4k.apps.googleusercontent.com',
       offlineAccess: true,
     });
   };
@@ -41,11 +42,17 @@ const MainMenuScreen = ({ navigation }) => {
       
       console.log('Attempting sign in...');
       const userInfo = await GoogleSignin.signIn();
-      console.log('Sign in successful:', userInfo)
+      console.log('Sign in successful:', userInfo);
+      console.log(userInfo.data.idToken);
+
+      
+      if (!userInfo || !userInfo.data.idToken) {
+        throw new Error('Failed to get valid user info from Google Sign In');
+      }
       
       // Store user info in AsyncStorage
-      await AsyncStorage.setItem('userToken', userInfo.idToken);
-      await AsyncStorage.setItem('userInfo', JSON.stringify(userInfo.user));
+      await AsyncStorage.setItem('userToken', userInfo.data.idToken);
+      await AsyncStorage.setItem('userInfo', JSON.stringify(userInfo.data.user));
       
       setIsSignedIn(true);
     } catch (error) {
@@ -57,6 +64,7 @@ const MainMenuScreen = ({ navigation }) => {
         Alert.alert('Play services not available');
       } else {
         Alert.alert('Something went wrong', error.toString());
+        console.error(error);
       }
     }
   };

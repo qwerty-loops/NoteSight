@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "279701516543",
+    "project_id": "ns-dev-1fc8a",
+    "storage_bucket": "ns-dev-1fc8a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279701516543:android:0f369a868cde9e463f9cca",
+        "android_client_info": {
+          "package_name": "com.notesight.v1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlQ3Gyi5c60p-2NXoTkpmAE5BvwtkWV1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

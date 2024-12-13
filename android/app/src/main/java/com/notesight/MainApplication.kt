@@ -1,4 +1,4 @@
-package com.notesight
+package com.notesight.v1
 
 import android.app.Application
 import com.facebook.react.PackageList

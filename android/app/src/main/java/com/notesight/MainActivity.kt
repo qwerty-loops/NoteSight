@@ -1,4 +1,4 @@
-package com.notesight
+package com.notesight.v1
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
