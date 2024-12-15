@@ -13,6 +13,7 @@ import {
 import Slider from '@react-native-community/slider';
 import AudioRecorderPlayer from 'react-native-audio-recorder-player';
 import RNFS from 'react-native-fs';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const AudioRecorderScreen = () => {
   const [recording, setRecording] = useState(false);
@@ -250,8 +251,14 @@ const AudioRecorderScreen = () => {
 
       <Modal visible={modalVisible} animationType="slide" transparent={false}>
         <View style={styles.fullScreenPlayer}>
-          <Pressable style={styles.closeButton} onPress={() => setModalVisible(false)}>
-            <Text style={styles.closeButtonText}>X</Text>
+          <Pressable 
+            style={styles.closeButton} 
+            onPress={() => {
+              stopPlaying();
+              setModalVisible(false);
+            }}
+          >
+            <Icon name="close" size={24} color="black" />
           </Pressable>
           <Text style={styles.playerTitle}>Now Playing</Text>
           <Text style={styles.playerFileName}>{currentPlaybackName}</Text>
@@ -355,12 +362,10 @@ const styles = StyleSheet.create({
   },
   closeButton: {
     position: 'absolute',
-    top: 20,
+    top: 40,
     right: 20,
-  },
-  closeButtonText: {
-    fontSize: 24,
-    color: 'black',
+    padding: 10,
+    zIndex: 1,
   },
   playerTitle: {
     color: 'black',
