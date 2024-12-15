@@ -3,6 +3,7 @@ import { View, StyleSheet, Pressable, ActivityIndicator, Alert, PermissionsAndro
 import { Camera, useCameraDevices } from 'react-native-vision-camera';
 import RNFS from 'react-native-fs';
 import Video from 'react-native-video';
+import Icon from 'react-native-vector-icons/AntDesign';
 
 const CameraScreen = () => {
   const [isRecording, setIsRecording] = useState(false);
@@ -224,9 +225,9 @@ const CameraScreen = () => {
               resizeMode="contain"
             />
           )}
-          <Pressable onPress={closeFullScreen} style={styles.closeButton}>
-          <Text style={styles.closeText}>X</Text>
-          </Pressable>
+          <View style={styles.closeIconContainer}>
+            <Icon name="close" size={24} color="white" onPress={closeFullScreen} />
+          </View>
         </View>
       </Modal>
     </View>
@@ -287,15 +288,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '80%',
   },
-  closeButton: {
+  closeIconContainer: {
     position: 'absolute',
     top: 40,
     right: 20,
-  },
-  closeText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'white',
+    zIndex: 1,
   },
 });
 
